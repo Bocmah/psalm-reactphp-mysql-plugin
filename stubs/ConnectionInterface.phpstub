@@ -1,0 +1,41 @@
+<?php
+
+namespace React\MySQL;
+
+use Evenement\EventEmitterInterface;
+use React\Promise\PromiseInterface;
+use React\Stream\ReadableStreamInterface;
+
+interface ConnectionInterface extends EventEmitterInterface
+{
+    /**
+     * @param string $sql    SQL statement
+     * @param array  $params Parameters which should be bound to query
+     *
+     * @return PromiseInterface<QueryResult> Returns a Promise<QueryResult,Exception>
+     */
+    public function query($sql, array $params = array()): PromiseInterface;
+
+    /**
+     * @param string $sql    SQL statement
+     * @param array  $params Parameters which should be bound to query
+     *
+     * @return ReadableStreamInterface
+     */
+    public function queryStream($sql, $params = array()): ReadableStreamInterface;
+
+    /**
+     * @return PromiseInterface<bool> Returns a Promise<true,Exception>
+     */
+    public function ping(): PromiseInterface;
+
+    /**
+     * @return PromiseInterface Returns a Promise<void,Exception>
+     */
+    public function quit(): PromiseInterface;
+
+    /**
+     * @return void
+     */
+    public function close(): void;
+}
