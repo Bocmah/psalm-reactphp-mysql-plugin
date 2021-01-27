@@ -1,5 +1,5 @@
 {
-    "name": "bocmah/psalm-reactphp-promise-plugin",
+    "name": "bocmah/psalm-reactphp-mysql-plugin",
     "description": "Psalm plugin for react/mysql",
     "type": "psalm-plugin",
     "license": "MIT",
